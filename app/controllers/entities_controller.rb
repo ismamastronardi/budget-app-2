@@ -3,7 +3,11 @@ class EntitiesController < ApplicationController
 
   # GET /entities or /entities.json
   def index
+    
     @entities = Entity.all
+    @group = current_user.groups.find(params[:group_id])
+    puts 'AAAAAAAAA'
+    puts @group.entities
   end
 
   # GET /entities/1 or /entities/1.json
