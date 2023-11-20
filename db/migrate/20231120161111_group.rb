@@ -4,7 +4,6 @@ class Group < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :icon
       t.references :user, foreign_key: true
-      t.references :entity, foreign_key: true
       t.timestamps
     end
   end
