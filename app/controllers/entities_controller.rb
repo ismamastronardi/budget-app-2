@@ -3,8 +3,6 @@ class EntitiesController < ApplicationController
 
   # GET /entities or /entities.json
   def index
-    puts 'OOOOOOOOOOOOOOOOOOO'
-    puts params
     @group = current_user.groups.includes(:entities).find(params[:group_id])
   end
 

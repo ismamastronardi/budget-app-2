@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
       { url: 'shipping.png', name: 'Shipping' },
       { url: 'shopping.png', name: 'Shopping' },
       { url: 'taxes.png', name: 'Taxes' }
-    ] 
+    ]
   end
 
   # POST /groups or /groups.json
@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
         format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
-        format.html { render :new, status: :unprocessable_entity}
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
