@@ -13,6 +13,10 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    @icons_array = [
+      { url: "fast_food.png", name: 'food' },
+      { url: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,100..700,FILL,GRAD@20..48,0..1,-50..200', name: 'finance' }
+    ]
   end
 
   # GET /groups/1/edit

@@ -21,6 +21,13 @@
     <%= f.text_field :icon, autofocus: true, autocomplete: "icon" %>
   </div>
 
+  <% @icons_array.each do |icon| %>
+    <%= radio_button_tag 'selected_icons[]', icon[:url] %>
+    <%= label_tag icon[:url], icon[:name] %>
+    <%= image_tag(icon[:url]) %>
+    <br>
+  <% end %>
+
   <div class="inline">
     <%= f.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
