@@ -25,13 +25,21 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit; end
+  def edit
+    @icons_array = [
+      { url: 'airplane.png', name: 'Travel' },
+      { url: 'budget.png', name: 'Finance' },
+      { url: 'entertainment.png', name: 'Entertainment' },
+      { url: 'food.png', name: 'Food' },
+      { url: 'health.png', name: 'Health' },
+      { url: 'shipping.png', name: 'Shipping' },
+      { url: 'shopping.png', name: 'Shopping' },
+      { url: 'taxes.png', name: 'Taxes' }
+    ] 
+  end
 
   # POST /groups or /groups.json
   def create
-    puts 'BBBBBBBBBBBB'
-    puts group_params
-    puts group_params[:icon]
     @group = current_user.groups.build(group_params)
 
     respond_to do |format|
@@ -47,9 +55,10 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
+    puts 'AAAAAAAAAAAAAA'
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully updated.' }
+        format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,7 +72,7 @@ class GroupsController < ApplicationController
     @group.destroy!
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+      format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
