@@ -16,6 +16,12 @@ class EntitiesController < ApplicationController
 
   # GET /entities/new
   def new
+    puts 'BBBBBBBBBBBBB'
+    puts params
+    current_user.groups.each do |group|
+      puts group.name
+    end
+    @group = current_user.groups.find(params[:group_id])
     @entity = Entity.new
   end
 
@@ -25,11 +31,22 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
-    @entity = Entity.new(entity_params)
+    puts 'CCCCCCCCCCC'
+    puts entity_params
+    @entity = Entity.new(entity_params.except(:group_ids))
+    puts @entity.name
+    puts @entity.amount
+    puts @entity.author
+
+
+    entity_params[:group_ids].each do |group_id|
+      @entity.groups << current_user.groups.select{|group| group.id == group_id.to_i }
+    end
+    puts @entity.groups
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to entity_url(@entity), notice: "Entity was successfully created." }
+        format.html { redirect_to user_groups_path(params[:group_id]), notice: "Entity was successfully created." }
         format.json { render :show, status: :created, location: @entity }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +59,7 @@ class EntitiesController < ApplicationController
   def update
     respond_to do |format|
       if @entity.update(entity_params)
-        format.html { redirect_to entity_url(@entity), notice: "Entity was successfully updated." }
+        format.html { redirect_to user_groups_path(params[:group_id]), notice: "Entity was successfully updated." }
         format.json { render :show, status: :ok, location: @entity }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,6 +86,8 @@ class EntitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      params.fetch(:entity, {})
+      params.require(:entity).permit(:name, :amount, { group_ids: [] }, :author_id).tap do |whitelisted|
+        whitelisted[:group_ids].reject!(&:empty?)
+      end
     end
 end
