@@ -14,8 +14,14 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @icons_array = [
-      { url: "fast_food.png", name: 'food' },
-      { url: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,100..700,FILL,GRAD@20..48,0..1,-50..200', name: 'finance' }
+      { url: "airplane.png", name: 'Travel' },
+      { url: 'budget.png', name: 'Finance' },
+      { url: 'entertainment.png', name: 'Entertainment' },
+      { url: 'food.png', name: 'Food' },
+      { url: 'health.png', name: 'Health' },
+      { url: 'shipping.png', name: 'Shipping' },
+      { url: 'shopping.png', name: 'Shopping' },
+      { url: 'taxes.png', name: 'Taxes' }
     ]
   end
 
@@ -27,6 +33,7 @@ class GroupsController < ApplicationController
   def create
     puts 'BBBBBBBBBBBB'
     puts group_params
+    puts group_params[:icon]
     @group = current_user.groups.build(group_params)
 
     respond_to do |format|
@@ -71,7 +78,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      puts 'AAAAAAAAAAAAA'
       puts params
       params.require(:group).permit(:name, :icon)
     end
