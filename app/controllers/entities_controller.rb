@@ -3,10 +3,7 @@ class EntitiesController < ApplicationController
 
   # GET /entities or /entities.json
   def index
-    @entities = Entity.all
-    @group = current_user.groups.find(params[:group_id])
-    puts 'AAAAAAAAA'
-    puts @group.entities
+    @group = current_user.groups.includes(:entities).find(params[:group_id])
   end
 
   # GET /entities/1 or /entities/1.json
@@ -14,11 +11,6 @@ class EntitiesController < ApplicationController
 
   # GET /entities/new
   def new
-    puts 'BBBBBBBBBBBBB'
-    puts params
-    current_user.groups.each do |group|
-      puts group.name
-    end
     @group = current_user.groups.find(params[:group_id])
     @entity = Entity.new
   end
@@ -28,24 +20,19 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
-    puts 'CCCCCCCCCCC'
-    puts entity_params
     @entity = Entity.new(entity_params.except(:group_ids))
-    puts @entity.name
-    puts @entity.amount
-    puts @entity.author
 
     entity_params[:group_ids].each do |group_id|
       @entity.groups << current_user.groups.select { |group| group.id == group_id.to_i }
     end
-    puts @entity.groups
 
     respond_to do |format|
       if @entity.save
         format.html { redirect_to user_groups_path(params[:group_id]), notice: 'Entity was successfully created.' }
         format.json { render :show, status: :created, location: @entity }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:alert] = @entity.errors.full_messages
+        format.html { redirect_to new_user_group_entity_path, status: :unprocessable_entity }
         format.json { render json: @entity.errors, status: :unprocessable_entity }
       end
     end
@@ -69,7 +56,7 @@ class EntitiesController < ApplicationController
     @entity.destroy!
 
     respond_to do |format|
-      format.html { redirect_to entities_url, notice: 'Entity was successfully destroyed.' }
+      format.html { redirect_to user_group_path(params[:group_id]), notice: 'Entity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

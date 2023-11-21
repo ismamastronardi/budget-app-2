@@ -1,0 +1,32 @@
+<%= form_with model: @group, url: user_group_path  do |f| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class= "flex flex-row flex-wrap">
+    <% @icons_array.each do |icon| %>
+      <%= f.radio_button 'icon', icon[:url] %>
+      <div class="w-50 object-contain">
+        <%= image_tag(icon[:url], :class => "max-h-10") %>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="inline">
+    <%= f.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

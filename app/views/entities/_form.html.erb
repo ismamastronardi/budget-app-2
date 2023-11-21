@@ -1,4 +1,14 @@
-<%= form_with model: entity, url: user_group_entities_path(current_user.id, @group.id) do |f| %>
+<% if @entity.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @entity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: entity, url: user_group_entities_path(current_user, @group) do |f| %>
   <% if entity.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
@@ -22,6 +32,8 @@
     <%= f.label :amount %>
     <%= f.number_field :amount, autofocus: true, autocomplete: "amount" %>
   </div>
+
+  <%= f.hidden_field :group_id,  value: @group.id %>
 
     <%= f.collection_check_boxes(:group_ids, current_user.groups, :id, :name) do |b| %>
     <%= b.check_box %>
