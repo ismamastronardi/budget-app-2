@@ -2,6 +2,7 @@
   <% if action_name != "show" %>
     <%# <%= link_to "Show this entity", entity, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%# <%= link_to "Edit this entity", edit_entity_path(entity), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= button_to "Destroy this entity", user_group_entity_path(current_user, @group, entity), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     <%= entity.name %>
     <hr class="mt-6">
   <% end %>
