@@ -58,7 +58,7 @@ class EntitiesController < ApplicationController
     @entity.destroy!
 
     respond_to do |format|
-      format.html { redirect_to user_groups_path(current_user), notice: 'Entity was successfully destroyed.' }
+      format.html { redirect_to user_group_path(params[:group_id]), notice: 'Entity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
