@@ -1,0 +1,10 @@
+<div id="<%= dom_id group %>">
+  <% if action_name != "show" %>
+    <%= group.name %><br>
+    <%= image_tag(group.icon, :class => "max-h-10") %><br>
+    <%= group.entities.size %>
+    <%= link_to "Show this group", user_group_entities_path(current_user, group), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%# <%= link_to "Edit this group", edit_group_path(group), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

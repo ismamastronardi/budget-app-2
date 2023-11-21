@@ -1,0 +1,38 @@
+<%= form_with model: entity, url: user_group_entities_path(current_user.id, @group.id) do |f| %>
+  <% if entity.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+        <% entity.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+  </div>
+
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="">
+    <%= f.label :amount %>
+    <%= f.number_field :amount, autofocus: true, autocomplete: "amount" %>
+  </div>
+
+    <%= f.collection_check_boxes(:group_ids, current_user.groups, :id, :name) do |b| %>
+    <%= b.check_box %>
+    <%= b.label %>
+  <% end %>
+
+
+
+  <%= f.hidden_field :author_id, value: current_user.id%>
+
+  <div class="inline">
+    <%= f.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
