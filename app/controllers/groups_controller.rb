@@ -12,7 +12,6 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    puts 'AAAAAAAAAAAAAAAAA'
     @group = Group.new
   end
 
@@ -37,7 +36,6 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
-    puts 'AAAAAAAAAAAAAA'
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully updated.' }
@@ -68,7 +66,6 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    puts params
     params.require(:group).permit(:name, :icon)
   end
 

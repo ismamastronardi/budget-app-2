@@ -12,9 +12,6 @@ class EntitiesController < ApplicationController
   # GET /entities/new
   def new
     @group = current_user.groups.find(params[:group_id])
-    puts 'AAAAAAAAAAAA'
-    puts params
-    puts @group
     @entity = Entity.new
   end
 
