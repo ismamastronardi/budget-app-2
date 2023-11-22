@@ -9,10 +9,10 @@ RSpec.describe Entity, type: :model do
   end
   subject { Entity.new(name: 'car ride', amount: 10, author_id: user.id) }
 
-  before { 
+  before do
     subject.groups << group
-    subject.save 
-  }
+    subject.save
+  end
 
   it 'is valid with valid parameters' do
     expect(subject).to be_valid

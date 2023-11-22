@@ -15,15 +15,13 @@ RSpec.describe 'Group creation', type: :system do
     fill_in 'name', with: 'transport'
     choose(page.all("input[type='radio']").first[:id])
     click_button 'Create Group'
-  
+
     expect(page).to have_content('transport')
   end
 
   it 're renders the page when user did not input values' do
     visit new_user_group_path(user)
-
     click_button 'Create Group'
-  
     expect(page).to have_content('2 errors prohibited this group from being saved:')
     expect(page).to have_content('Name can\'t be blank')
     expect(page).to have_content('Icon can\'t be blank')

@@ -19,7 +19,7 @@ RSpec.describe 'Entity creation', type: :system do
     fill_in 'amount', with: '10'
     check(page.all("input[type='checkbox']").first[:id])
     click_button 'Create Entity'
-  
+
     expect(page).to have_content('transport')
     expect(page).to have_content('1')
   end
@@ -28,7 +28,7 @@ RSpec.describe 'Entity creation', type: :system do
     visit new_user_group_entity_path(user, group)
 
     click_button 'Create Entity'
-  
+
     expect(page).to have_content('3 errors prohibited this entity from being saved:')
     expect(page).to have_content('Name can\'t be blank')
     expect(page).to have_content('Groups can\'t be blank')

@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit;end
+  def edit; end
 
   # POST /groups or /groups.json
   def create
