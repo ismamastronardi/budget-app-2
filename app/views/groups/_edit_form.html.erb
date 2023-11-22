@@ -1,5 +1,4 @@
 <%= form_with model: @group, url: user_group_path  do |f| %>
-<div class="bg-white">
   <% if group.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -28,6 +27,5 @@
   <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
     <%= f.submit class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
   </div>
-</div>
 
 <% end %>
