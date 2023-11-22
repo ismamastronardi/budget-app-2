@@ -11,14 +11,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= button_to(
-      "Log Out",
-      destroy_user_session_path,
-      method: :delete,
-    ) %>
-    <%= yield %>
+  <body class="h-full">
+    <main class="bg-light_grey h-full sm:p-4 min-h-[650px] sm:min-h-[772px]">
+     <div class="fixed top-2 right-4 z-10">
+        <%= button_to(
+          image_tag("power.png", class:"max-h-6"),
+          destroy_user_session_path,
+          method: :delete,
+        ) %>
+      </div>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,7 +1,13 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New group</h1>
+<div class="w-full relative">
+  <div class="text-center bg-blue top-0 left-0 right-0">
+    <h1 class="font-bold text-4xl text-white">New Group</h1>
+  </div>
 
-  <%= render "form", group: @group %>
+  <div id="entities" class="fixed left-4 top-2">
+    <%= link_to image_tag("arrow.png", class:"max-h-6"), user_groups_path(current_user) %>
+  </div>
 
-  <%= link_to "Back to groups", user_groups_path(current_user), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="mt-8 bg-white">
+    <%= render "form", group: @group %>
+  </div>
 </div>

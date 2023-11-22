@@ -12,21 +12,20 @@
   <% end %>
 
   <div class="">
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "name", class: "w-full mb-2"  %>
   </div>
 
-  <div class= "flex flex-row flex-wrap">
+  <div class= "grid grid-cols-3 gap-4 place-items-center border-b-2">
     <% @icons_array.each do |icon| %>
-      <%= f.radio_button 'icon', icon[:url] %>
-      <div class="w-50 object-contain">
-        <%= image_tag(icon[:url], :class => "max-h-10") %>
+      <div class="w-50 object-contain flex flex-row justify-center  items-center">
+        <%= f.radio_button 'icon', icon[:url], class: "ml-4" %>
+        <%= image_tag(icon[:url], class: "max-h-10 ml-4") %>
       </div>
     <% end %>
   </div>
 
-
-  <div class="inline">
-    <%= f.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
+    <%= f.submit class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
   </div>
+
 <% end %>

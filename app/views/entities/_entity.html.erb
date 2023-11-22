@@ -1,9 +1,22 @@
 <div id="<%= dom_id entity %>">
-  <% if action_name != "show" %>
-    <%# <%= link_to "Show this entity", entity, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%# <%= link_to "Edit this entity", edit_entity_path(entity), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= button_to "Destroy this entity", user_group_entity_path(current_user, @group, entity), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    <%= entity.name %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="flex flex-row text-center justify-center items-center bg-white mb-4">
+    <div class="flex-1">
+      <div class="flex flex-row justify-between text-center items-center px-4">
+        <div>
+          <%= entity.name.capitalize() %>
+        </div>
+        <div>
+         Amount:  <%= entity.amount %>
+        </div>
+        <%= button_to image_tag("trash.png", class:"max-h-6"), 
+        user_group_entity_path(current_user, @group, entity), 
+        method: :delete, 
+        class: "align-middle rounded-lg py-3 px-5 font-medium mb-1",
+        form_class: "inline"
+        %>
+      </div>
+
+    </div>
+
+  </div>
 </div>

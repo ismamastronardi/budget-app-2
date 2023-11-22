@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   # GET /groups/1 or /groups/1.json
@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
     @icons_array = [
       { url: 'airplane.png', name: 'Travel' },
       { url: 'budget.png', name: 'Finance' },
+      { url: 'cleaning.png', name: 'Finance' },
       { url: 'entertainment.png', name: 'Entertainment' },
       { url: 'food.png', name: 'Food' },
       { url: 'health.png', name: 'Health' },
@@ -29,6 +30,7 @@ class GroupsController < ApplicationController
     @icons_array = [
       { url: 'airplane.png', name: 'Travel' },
       { url: 'budget.png', name: 'Finance' },
+      { url: 'cleaning.png', name: 'Finance' },
       { url: 'entertainment.png', name: 'Entertainment' },
       { url: 'food.png', name: 'Food' },
       { url: 'health.png', name: 'Health' },
