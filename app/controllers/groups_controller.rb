@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
     @icons_array = [
       { url: 'airplane.png', name: 'Travel' },
       { url: 'budget.png', name: 'Finance' },
+      { url: 'cleaning.png', name: 'Finance' },
       { url: 'entertainment.png', name: 'Entertainment' },
       { url: 'food.png', name: 'Food' },
       { url: 'health.png', name: 'Health' },
@@ -29,6 +30,7 @@ class GroupsController < ApplicationController
     @icons_array = [
       { url: 'airplane.png', name: 'Travel' },
       { url: 'budget.png', name: 'Finance' },
+      { url: 'cleaning.png', name: 'Finance' },
       { url: 'entertainment.png', name: 'Entertainment' },
       { url: 'food.png', name: 'Food' },
       { url: 'health.png', name: 'Health' },
