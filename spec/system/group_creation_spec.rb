@@ -19,7 +19,7 @@ RSpec.describe 'Group creation', type: :system do
     expect(page).to have_content('transport')
   end
 
-  it 'allows a user to create a new group' do
+  it 're renders the page when user did not input values' do
     visit new_user_group_path(user)
 
     click_button 'Create Group'
