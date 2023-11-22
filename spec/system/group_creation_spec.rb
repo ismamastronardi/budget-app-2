@@ -28,6 +28,4 @@ RSpec.describe 'Group creation', type: :system do
     expect(page).to have_content('Name can\'t be blank')
     expect(page).to have_content('Icon can\'t be blank')
   end
-
-
 end
