@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
+  before_action :set_icons_array, only: %i[new edit]
 
   # GET /groups or /groups.json
   def index
@@ -12,33 +13,10 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
-    @icons_array = [
-      { url: 'airplane.png', name: 'Travel' },
-      { url: 'budget.png', name: 'Finance' },
-      { url: 'cleaning.png', name: 'Finance' },
-      { url: 'entertainment.png', name: 'Entertainment' },
-      { url: 'food.png', name: 'Food' },
-      { url: 'health.png', name: 'Health' },
-      { url: 'shipping.png', name: 'Shipping' },
-      { url: 'shopping.png', name: 'Shopping' },
-      { url: 'taxes.png', name: 'Taxes' }
-    ]
   end
 
   # GET /groups/1/edit
-  def edit
-    @icons_array = [
-      { url: 'airplane.png', name: 'Travel' },
-      { url: 'budget.png', name: 'Finance' },
-      { url: 'cleaning.png', name: 'Finance' },
-      { url: 'entertainment.png', name: 'Entertainment' },
-      { url: 'food.png', name: 'Food' },
-      { url: 'health.png', name: 'Health' },
-      { url: 'shipping.png', name: 'Shipping' },
-      { url: 'shopping.png', name: 'Shopping' },
-      { url: 'taxes.png', name: 'Taxes' }
-    ]
-  end
+  def edit; end
 
   # POST /groups or /groups.json
   def create
@@ -49,6 +27,7 @@ class GroupsController < ApplicationController
         format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
+        set_icons_array
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -57,7 +36,6 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
-    puts 'AAAAAAAAAAAAAA'
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully updated.' }
@@ -88,7 +66,20 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    puts params
     params.require(:group).permit(:name, :icon)
+  end
+
+  def set_icons_array
+    @icons_array = [
+      { url: 'airplane.png', name: 'Travel' },
+      { url: 'budget.png', name: 'Finance' },
+      { url: 'cleaning.png', name: 'Finance' },
+      { url: 'entertainment.png', name: 'Entertainment' },
+      { url: 'food.png', name: 'Food' },
+      { url: 'health.png', name: 'Health' },
+      { url: 'shipping.png', name: 'Shipping' },
+      { url: 'shopping.png', name: 'Shopping' },
+      { url: 'taxes.png', name: 'Taxes' }
+    ]
   end
 end

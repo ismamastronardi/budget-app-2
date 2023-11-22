@@ -20,7 +20,7 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
-    @entity = Entity.new(entity_params.except(:group_ids))
+    @entity = Entity.new(entity_params.except(:group_ids, :group_id))
 
     entity_params[:group_ids].each do |group_id|
       @entity.groups << current_user.groups.select { |group| group.id == group_id.to_i }
@@ -31,8 +31,9 @@ class EntitiesController < ApplicationController
         format.html { redirect_to user_groups_path(params[:group_id]), notice: 'Entity was successfully created.' }
         format.json { render :show, status: :created, location: @entity }
       else
+        @group = current_user.groups.find(params[:group_id])
         flash.now[:alert] = @entity.errors.full_messages
-        format.html { redirect_to new_user_group_entity_path, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @entity.errors, status: :unprocessable_entity }
       end
     end
@@ -70,7 +71,7 @@ class EntitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def entity_params
-    params.require(:entity).permit(:name, :amount, { group_ids: [] }, :author_id).tap do |whitelisted|
+    params.require(:entity).permit(:name, :amount, { group_ids: [] }, :author_id, :group_id).tap do |whitelisted|
       whitelisted[:group_ids].reject!(&:empty?)
     end
   end
