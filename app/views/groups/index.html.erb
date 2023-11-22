@@ -1,15 +1,20 @@
-<div class="w-full">
+<div class="w-full relative ">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <p class="mb-5 py-2 font-medium inline-block bg-blue fixed top-10 left-0 right-0 mb-4 text-white text-center" 
+    id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="text-center bg-blue ">
+  <div class="text-center bg-blue fixed top-0 left-0 right-0">
     <h1 class="font-bold text-4xl text-white">Transactions</h1>
   </div>
 
-      <%= link_to "New group", new_user_group_path(current_user), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-
-  <div id="groups" class="m-10 bg-white ">
+  <div id="groups" class="mt-8 mx-4 mb-20">
     <%= render @groups %>
   </div>
+
+  <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
+    <%= link_to "NEW", new_user_group_path(current_user), 
+    class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
+  </div>
+
 </div>
