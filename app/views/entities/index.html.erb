@@ -1,5 +1,5 @@
 <div class="w-full relative">
-  <div class="text-center bg-blue top-0 left-0 right-0">
+  <div class="text-center bg-blue top-0 left-0 right-0 py-1 fixed">
     <h1 class="font-bold text-4xl text-white">Entities <%= @group.entities.size %></h1>
   </div>
 
@@ -7,12 +7,12 @@
     <%= link_to image_tag("arrow.png", class:"max-h-6"), user_groups_path(current_user) %>
   </div>
 
-  <div id="entities" class="mt-8 mx-4 mb-20">
+  <div id="entities" class="pt-16 pb-12 mx-4 mb-20 bg-light_grey">
     <%= render @group.entities %>
   </div>
 
-  <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
-    <%= link_to "NEW", new_user_group_entity_path(current_user, @group),
+    <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
+    <%= link_to "NEW", new_user_group_entity_path(current_user, @group), 
     class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
   </div>
 
