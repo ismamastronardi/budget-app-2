@@ -20,7 +20,7 @@ RSpec.describe 'Groups index', type: :request do
       get "/users/#{user.id}/groups"
       expect(response.status).to eq(200)
       expect(response).to render_template('index')
-      expect(response.body).to include('Transactions')
+      expect(response.body).to include('Categories')
     end
 
     it 'Renders the groups in the page' do
