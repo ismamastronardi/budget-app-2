@@ -30,7 +30,7 @@ RSpec.describe 'Entities index', type: :request do
     it 'Renders the entities in the page' do
       get "/users/#{user.id}/groups/#{group.id}/entities"
       expect(response.body).to include('Car ride')
-      expect(response.body).to include('Amount:  10.0')
+      expect(response.body).to include('Amount: $10.0')
       expect(response.body).to include('class="max-h-6')
     end
   end
