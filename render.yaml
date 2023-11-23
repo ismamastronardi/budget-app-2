@@ -1,5 +1,5 @@
 databases:
-  - name: BudgetBinder
+  - name: Budget_Binder
     databaseName: BudgetBinder
     user: mysite
 
