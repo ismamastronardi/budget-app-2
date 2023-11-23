@@ -1,6 +1,6 @@
 databases:
-  - name: Budget_Binder
-    databaseName: BudgetBinder
+  - name: BudgetBinder
+    databaseName: budget_binder
     user: mysite
 
 services:
