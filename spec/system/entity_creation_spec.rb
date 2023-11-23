@@ -18,7 +18,7 @@ RSpec.describe 'Entity creation', type: :system do
     fill_in 'name', with: 'car ride'
     fill_in 'amount', with: '10'
     check(page.all("input[type='checkbox']").first[:id])
-    click_button 'Create Entity'
+    click_button 'Create Transaction'
 
     expect(page).to have_content('transport')
     expect(page).to have_content('1')
@@ -27,7 +27,7 @@ RSpec.describe 'Entity creation', type: :system do
   it 're renders the page when user did not input values' do
     visit new_user_group_entity_path(user, group)
 
-    click_button 'Create Entity'
+    click_button 'Create Transaction'
 
     expect(page).to have_content('3 errors prohibited this entity from being saved:')
     expect(page).to have_content('Name can\'t be blank')
