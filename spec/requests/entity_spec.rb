@@ -24,7 +24,8 @@ RSpec.describe 'Entities index', type: :request do
       get "/users/#{user.id}/groups/#{group.id}/entities"
       expect(response.status).to eq(200)
       expect(response).to render_template('index')
-      expect(response.body).to include('Entities 2')
+      expect(response.body).to include('Transactions')
+      expect(response.body).to include('Total Transactions: 2')
     end
 
     it 'Renders the entities in the page' do
