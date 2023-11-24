@@ -28,7 +28,7 @@ class EntitiesController < ApplicationController
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to user_groups_path(params[:group_id]), notice: 'Entity was successfully created.' }
+        format.html { redirect_to user_group_entities_path(current_user, params[:group_id]), notice: 'Entity was successfully created.' }
         format.json { render :show, status: :created, location: @entity }
       else
         @group = current_user.groups.find(params[:group_id])
@@ -43,7 +43,7 @@ class EntitiesController < ApplicationController
   def update
     respond_to do |format|
       if @entity.update(entity_params)
-        format.html { redirect_to user_groups_path(params[:group_id]), notice: 'Entity was successfully updated.' }
+        format.html { redirect_to user_group_path(current_user, params[:group_id]), notice: 'Entity was successfully updated.' }
         format.json { render :show, status: :ok, location: @entity }
       else
         format.html { render :edit, status: :unprocessable_entity }
