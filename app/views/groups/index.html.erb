@@ -4,7 +4,13 @@
     <h1 class="font-bold text-4xl text-white">Categories</h1>
   </header>
 
-  <div class="pt-16 pb-2 mx-4 mb-20 bg-light_grey">
+  <div class="text-center bg-blue mx-auto fixed top-10 left-0 right-0 p-1">
+    <p class="border-t-2 inline p-1">
+      Total Categories: <%= @groups.size %>
+    </p>
+  </div>
+
+  <div class="pt-20 pb-2 mx-4 mb-20 bg-light_grey">
     <%= render @groups %>
   </div>
 
