@@ -4,6 +4,7 @@ class EntitiesController < ApplicationController
   # GET /entities or /entities.json
   def index
     @group = current_user.groups.includes(:entities).find(params[:group_id])
+    @total_count = @group.entities.loaded? ? @group.entities.sum(&:amount) : @group.total_amount
   end
 
   # GET /entities/1 or /entities/1.json
