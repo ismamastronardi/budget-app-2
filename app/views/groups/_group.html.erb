@@ -10,7 +10,8 @@
           <%= group.name %>
         </div>
         <div>
-          <%= group.entities.size %>
+          <% total_amount = group.entities.loaded? ? group.entities.sum(&:amount) : group.total_amount %>
+          $<%= total_amount %>
         </div>
       </div>
       <div>
@@ -23,6 +24,5 @@
         %>
       </div>
     </div>
-
   </div>
 </div>

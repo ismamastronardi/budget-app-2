@@ -8,9 +8,11 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Install](#install)
   - [Usage](#usage)
+
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -21,7 +23,10 @@
 
 # 📖 BudgetBinder <a name="about-project"></a>
 
-** BudgetBinder ** is a Ruby on Rails aplication to keep track of your spending and budget.
+**BudgetBinder** is a Ruby on Rails aplication to keep track of your spending and budget.
+
+You can watch a video about this project [here](https://www.loom.com/share/d9b68a3ddfec49aea3180ee341c34153)
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -55,6 +60,13 @@
 - **User sign_in and login using devise**
 - **Can create Categories to group you transactions**
 - **Can add new transactions**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+- (https://budget-binder.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
