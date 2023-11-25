@@ -1,0 +1,22 @@
+<div id="<%= dom_id entity %>">
+  <div class="flex flex-row text-center justify-center items-center bg-white mb-4">
+    <div class="flex-1">
+      <div class="flex flex-row justify-between text-center items-center px-4">
+        <div>
+          <%= entity.name.capitalize() %>
+        </div>
+        <div>
+         Amount: $<%= entity.amount %>
+        </div>
+        <%= button_to image_tag("trash.png", class:"max-h-6"), 
+        user_group_entity_path(current_user, @group, entity), 
+        method: :delete, 
+        class: "align-middle rounded-lg py-3 px-5 font-medium mb-1",
+        form_class: "inline"
+        %>
+      </div>
+
+    </div>
+
+  </div>
+</div>

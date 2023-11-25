@@ -1,0 +1,22 @@
+<div class="w-full relative">
+
+  <header class="text-center bg-blue top-0 left-0 right-0 py-1 fixed">
+    <h1 class="font-bold text-4xl text-white">Categories</h1>
+  </header>
+
+  <div class="text-center bg-blue mx-auto fixed top-10 left-0 right-0 p-1">
+    <p class="border-t-2 inline p-1">
+      Total Amount: $<%= @total_count %>
+    </p>
+  </div>
+
+  <div class="pt-20 pb-2 mx-4 mb-20 bg-light_grey">
+    <%= render @groups %>
+  </div>
+
+  <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
+    <%= link_to "New Category", new_user_group_path(current_user), 
+    class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
+  </div>
+
+</div>

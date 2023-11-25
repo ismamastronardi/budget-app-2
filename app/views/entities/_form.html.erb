@@ -1,0 +1,44 @@
+<%= form_with model: entity, url: user_group_entities_path(current_user, @group) do |f| %>
+  <% if entity.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+        <% entity.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+  </div>
+
+  <div class="pt-6">
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "name",
+    class: "w-full mb-2" 
+    %>
+  </div>
+
+  <div class="">
+    <%= f.number_field :amount, autofocus: true, autocomplete: "amount", placeholder: "amount",
+    class: "w-full" 
+    %>
+  </div>
+
+  <div>
+      <%= f.hidden_field :group_id,  value: @group.id %>
+
+      <%= f.collection_check_boxes(:group_ids, current_user.groups, :id, :name) do |b| %>
+      <div class="flex flex-row text-center items-center">
+        <%= b.check_box(class: "ml-4") %>
+        <%= b.label(class: "ml-4") %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.hidden_field :author_id, value: current_user.id%>
+
+  <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
+    <%= f.submit  "Create Transaction", class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
+  </div>
+<% end %>

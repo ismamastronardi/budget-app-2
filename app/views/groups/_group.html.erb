@@ -1,0 +1,28 @@
+<div id="<%= dom_id group %>">
+  <div class="flex flex-row text-center justify-center items-center bg-white mb-4">
+    <div class="flex-none items-center ml-5 border-2 p-4 m-2">
+      <%= image_tag(group.icon, :class => "max-h-12") %>
+    </div>
+
+    <div class="flex-1">
+      <div class="flex flex-row justify-between px-4">
+        <div>
+          <%= group.name %>
+        </div>
+        <div>
+          <% total_amount = group.entities.loaded? ? group.entities.sum(&:amount) : group.total_amount %>
+          $<%= total_amount %>
+        </div>
+      </div>
+      <div>
+        <%= link_to "Show", user_group_entities_path(current_user, group), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit", edit_user_group_path(current_user,group), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= button_to image_tag("trash.png", class:"max-h-6"), user_group_path(current_user, group), 
+        method: :delete, 
+        class: "align-middle rounded-lg py-3 px-5 bg-gray-100 font-medium mb-1",
+        form_class: "inline"
+        %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BudgetApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="h-full">
+    <main class="bg-light_grey h-full sm:p-4 min-h-[650px] sm:min-h-[772px]">
+    <% if current_user %>
+     <div class="fixed top-3 right-4 z-10">
+        <%= button_to(
+          image_tag("power.png", class:"max-h-6"),
+          destroy_user_session_path,
+          method: :delete,
+        ) %>
+      </div>
+    <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
