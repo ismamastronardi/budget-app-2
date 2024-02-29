@@ -1,23 +1,23 @@
-<div class="relative w-full">
-  <div class="fixed top-0 left-0 right-0 py-1 text-center bg-blue">
+<div class="relative flex flex-col justify-between w-full h-full">
+  <div class="py-1 text-center bg-blue" style="border-top-left-radius:2rem; border-top-right-radius:2rem">
     <h1 class="text-4xl font-bold text-white"><%= @group.name %></h1>
-  </div>
-
-  <div class="fixed left-0 right-0 p-1 mx-auto text-center bg-blue top-10">
-    <p class="inline p-1 border-t-2">
+        <p class="inline p-1 border-t-2">
       Total Transactions: $<%= @total_count %>
     </p>
-  </div>
-
-  <div id="entities" class="fixed left-4 top-3">
+      <div id="entities" style="position:absolute; top: 1rem; left: 1.875rem;">
     <%= link_to image_tag("arrow.png", class:"max-h-6"), user_groups_path(current_user) %>
   </div>
+  </div>
+
+
+
+
 
   <div id="entities" class="pt-20 pb-12 mx-4 mb-20">
     <%= render @group.entities %>
   </div>
 
-  <div class="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center w-full py-2 text-center bg-green">
+  <div class="flex flex-row items-center justify-center w-full py-2 text-center bg-green" style="border-bottom-left-radius:2rem; border-bottom-right-radius:2rem">
     <%= link_to "New Transaction", new_user_group_entity_path(current_user, @group), 
     class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
   </div>

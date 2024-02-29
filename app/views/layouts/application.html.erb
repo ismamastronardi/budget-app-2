@@ -11,10 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="h-full">
-    <main class=" h-full sm:p-4 min-h-[650px] sm:min-h-[772px]">
+  <body class="flex items-center justify-center">
+    <main class="">
     <% if current_user %>
-     <div class="fixed z-10 top-3 right-4">
+     <div class="z-10" style="position:absolute; top: 1rem; right: 1.875rem;">
         <%= button_to(
           image_tag("power.png", class:"max-h-6"),
           destroy_user_session_path,
@@ -26,3 +26,19 @@
     </main>
   </body>
 </html>
+<style>
+body {
+  height: 100%;
+}
+main {
+  position: relative;
+  width: 25rem;
+  border: 2px solid #e2e8f0;
+  rounded: 0.5rem;
+  height: 100vh;
+  min-height: 43rem;
+  max-height: 43rem;
+  margin-top: 2rem;
+  border-radius: 2rem
+}
+</style>
