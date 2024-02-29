@@ -1,10 +1,10 @@
-<div class="w-full relative">
-  <div class="text-center bg-blue top-0 left-0 right-0 py-1 fixed">
-    <h1 class="font-bold text-4xl text-white"><%= @group.name %></h1>
+<div class="relative w-full">
+  <div class="fixed top-0 left-0 right-0 py-1 text-center bg-blue">
+    <h1 class="text-4xl font-bold text-white"><%= @group.name %></h1>
   </div>
 
-  <div class="text-center bg-blue mx-auto fixed top-10 left-0 right-0 p-1">
-    <p class="border-t-2 inline p-1">
+  <div class="fixed left-0 right-0 p-1 mx-auto text-center bg-blue top-10">
+    <p class="inline p-1 border-t-2">
       Total Transactions: $<%= @total_count %>
     </p>
   </div>
@@ -13,11 +13,11 @@
     <%= link_to image_tag("arrow.png", class:"max-h-6"), user_groups_path(current_user) %>
   </div>
 
-  <div id="entities" class="pb-12 pt-20 mx-4 mb-20 bg-light_grey">
+  <div id="entities" class="pt-20 pb-12 mx-4 mb-20">
     <%= render @group.entities %>
   </div>
 
-  <div class="w-full flex flex-row text-center justify-center items-center bg-green py-2 fixed bottom-0 left-0 right-0">
+  <div class="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center w-full py-2 text-center bg-green">
     <%= link_to "New Transaction", new_user_group_entity_path(current_user, @group), 
     class: "py-3 px-5 bg-blue-600 text-white block font-medium border py-4 px-20" %>
   </div>
